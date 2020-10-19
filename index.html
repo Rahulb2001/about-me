@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align:center">
+            <h2>write a opinion on rahul</h2>
+            <p>leave us a message:</p>
+        </div>
+        <div class="row">
+
+            <div class="column">
+                <form id="submit-form" method="POST" action="htps://script.google.com/macros/s/AKfycbyLZcxW0f0LXrk_Y7N8a" Qa>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="name" placeholder="Your name..">
+                    <label for="lname">Email</label>
+                    <input type="text" id="lname" name="email" placeholder="Your last name..">
+                    <label for="country">Country</label>
+                    <select id="country" name="color">
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="INDIA">INDIA</option>
+              </select>
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="message" placeholder="Write something.." style="height:170px"></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="column">
+                <img src="rahul.jpeg" style="width:100%">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit-form").submit((e) => {
+            e.preventDefault()
+            $.ajax({
+                url: " https://script.google.com/macros/s/AKfycbyLZcxW0f0LXrk_Y7N8anQQaK86xPb2HJ_RBqzf-A/exec",
+                data: $("#submit-form").serialize(),
+                method: "post",
+                success: function(response) {
+                    alert("Thank you for writting")
+                    window.location.reload()
+                        //window.location.href="https://google.com"
+                },
+                error: function(err) {
+                    alert("Something Error")
+
+                }
+            })
+        })
+    </script>
+
+    <!-- Code injected by live-server -->
+    <script type="text/javascript">
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function() {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function(msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        } else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
